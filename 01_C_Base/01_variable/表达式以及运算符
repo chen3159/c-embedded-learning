@@ -1,0 +1,43 @@
+//表达式
+ 
+#include <stdio.h>
+
+int main(){
+	
+	int hour1,minute1;
+	int hour2,minute2;
+	
+	scanf("%d %d", &hour1, &minute1);
+	scanf("%d %d", &hour2, &minute2);
+	
+	int t1 = hour1 * 60 + minute1;  //乘法 加法运算 
+	int t2 = hour2 * 60 + minute2;
+	
+	int t = t2-t1;
+	
+	printf ("时间差是%d小时%d分。",t/60,t%60); //取整 取余运算 
+	
+	return 0;
+	
+	
+}
+
+//运算符优先级
+//输入两个整数，输出他们的平均值 
+//不要写嵌套式的运算，会导致表达不清楚 以及结果出错
+ 
+#include <stdio.h>
+
+int main(){
+	
+	int a ,b;
+	
+	scanf("%d %d", &a, &b);
+	
+	double c = (a+b)/2.0;
+	
+	printf("%d和%d的平均值=%f\n",a,b,c);
+	
+	return 0;
+}
+

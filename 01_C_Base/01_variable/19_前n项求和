@@ -1,0 +1,44 @@
+ #include <stdio.h>
+int main (){
+
+
+
+	/*前n项目求和
+	int n;
+	int  i;
+	double sum = 0.0;
+	
+	scanf("%d",&n);
+	for ( i =1; i<=n; i++){
+		sum += 1.0/i;
+	} 
+	
+	
+	printf("f(%d)=%f\n",n,sum);*/
+	
+	
+	/*前n项 加一项减一项*/
+	int n;
+	int  i;
+	double sum = 0.0;
+	int sign =1; //新增一个变量sign 
+	//double sign =1.0;
+	
+	scanf("%d",&n);
+	for ( i =1; i<=n; i++){
+		sum += sign*1.0/i;
+		sign = -sign;//每一个循环sign就加一个负号 
+		
+					//如果定义一个double sign =1.0; 那么循环里就不需要乘1.0了 
+	} 
+	
+	
+	printf("f(%d)=%f\n",n,sum);
+
+
+
+	
+	
+	
+	return 0;
+}

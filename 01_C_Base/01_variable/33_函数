@@ -1,0 +1,222 @@
+# 函数
+
+
+
+```c
+#include <stdio.h>
+
+// 函数功能：判断一个数 i 是否是素数
+// 返回值：1 表示是素数，0 表示不是素数
+int isPrime(int i){
+ 								// 先默认当前数是素数（标记为1）
+ 	int ret = 1;
+	int k;
+								 // 遍历从 2 到 i-1 的所有数，检查是否能整除 i
+	for ( k=2; k<i-1; k++ ) {	// 如果 i 能被 k 整除，说明不是素数
+	    if ( i%k == 0 ) {		  
+	        ret = 0;			// 标记为非素数
+	        break;				// 找到因子，直接退出循环，不用再判断
+	        }
+	    }
+	   
+	    return ret;		 // 返回判断结果：1=素数，0=非素数
+}     
+   
+int main()
+{
+    int m,n;			// 存储输入的区间 [m, n]
+    int sum = 0;		// 存储区间内所有素数的和
+    int cnt = 0;		// 存储区间内素数的个数
+    int i;				// 循环变量
+
+    scanf("%d %d", &m, &n);	 // 输入两个整数 m 和 n，表示要判断的区间
+    // m=10,n=31;
+    if ( m==1 ) m=2;		 	// 特殊处理：1 不是素数，如果 m=1，直接从 2 开始判断
+    for ( i=m; i<=n; i++ ) {  	// 遍历区间 [m, n] 中的每一个数
+        if ( isPrime(i) ) {		 // 调用 isPrime 函数判断是否是素数
+            sum += i;			// 是素数，累加到总和 sum
+            cnt++;				// 素数个数 +1
+        }
+    }
+    printf("%d %d\n", cnt, sum);		// 输出：素数的个数 和 素数的总和
+
+    return 0;
+}
+```
+
+***把代码优化了，首先自己创建一个函数。然后在下面利用这个函数。***
+
+
+
+![image-20260401101250421](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260401101250421.png)
+
+***代码复制是程序质量不良的表现***
+
+![image-20260401102652106](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260401102652106.png)
+
+
+
+## 求和函数
+
+
+
+```c
+#include <stdio.h>
+void sum(int begin, int end)
+{
+    int i;
+    int sum = 0;
+    for (i = begin; i <= end; i++) {
+        sum += i;
+    }
+    printf("%d到%d的和是%d\n", begin, end, sum);
+}
+
+int main()
+{
+    sum(1, 10);
+    sum(20, 30);
+    sum(35, 45);
+
+    return 0;
+}
+```
+
+这个函数可以去做这个for循环
+
+![image-20260401102938906](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260401102938906.png)
+
+
+
+
+
+
+
+## 函数的定义和使用
+
+![image-20260401104139556](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260401104139556.png)
+
+![image-20260401104703507](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260401104703507.png)
+
+![image-20260401105232354](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260401105232354.png)
+
+
+
+调试过程中 F8 或者点击  单步进入 会看到程序进入sum函数里；
+
+![image-20260401110145588](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260401110145588.png)
+
+
+
+
+
+## 从函数中返回
+
+![image-20260401135534529](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260401135534529.png)
+
+```c
+#include <stdio.h>
+
+int max(int a, int b)
+{
+	int ret;
+	if ( a>b ){
+		ret = a;
+	}else{
+		ret = b;
+	}
+	
+	return ret;
+ } 
+ 
+ int main(){
+ 	int a,b,c;
+ 	a = 5;
+ 	b = 6;
+ 	c = max(10,12);
+ 	c = max(a,b);
+ 	c = max(c,23);
+ 	printf("%d\n",max(a,b));
+ 	
+ 	return 0;
+ }
+```
+
+**可以改造成这样，在一个函数里可以出现多个return;**
+
+-虽然没有问题    但不符合单一出口的理念
+
+![image-20260401140445035](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260401140445035.png)
+
+
+
+### 没有返回值的函数 void
+
+![image-20260401140657037](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260401140657037.png)
+
+
+
+## 函数原型
+
+
+
+
+
+![image-20260401144125052](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260401144125052.png)
+
+
+
+### 函数先后关系
+
+​		
+
+![image-20260401141730636](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260401141730636.png)
+
+
+
+``````c
+#include <stdio.h>
+
+void sum(int begin, int end);//函数的声明
+
+int main()
+{
+    sum(1,10);	//int sum(int,int)
+    sum(20,30);
+    sum(35,45);
+    return 0;
+}
+
+
+//函数的定义
+void sum(int begin, int end)		
+{
+    int i;
+    int sum = 0;
+    for (i = begin; i <= end; i++) {
+        sum += i;
+    }
+    printf("%d到%d的和是%d\n", begin, end, sum);
+}
+``````
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

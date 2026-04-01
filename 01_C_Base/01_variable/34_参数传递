@@ -1,0 +1,42 @@
+# 参数传递
+
+
+
+### 调用函数
+
+![image-20260401144615614](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260401144615614.png)
+
+### 类型不匹配
+
+
+
+![image-20260401145308086](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260401145308086.png)
+
+```c
+#include <stdio.h>
+
+void cheer(int i)
+{
+	printf("cheer %d\n",i);
+}
+
+int main()
+{
+	cheer(2.4);
+	
+	return 0;
+}
+```
+
+
+
+
+
+![image-20260401172636764](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260401172636764.png)
+
+***现在已经不适用了；现在用参数  值  参数 定义。***
+
+![image-20260401172822218](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260401172822218.png)
+
+![image-20260401172910155](C:/Users/cici/AppData/Roaming/Typora/typora-user-images/image-20260401172910155.png)
+

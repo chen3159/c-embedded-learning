@@ -1,0 +1,111 @@
+# 初试数组
+
+如何写一个程序计算用户输入的数字的平均数?
+
+![image-20260402133554411](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260402133554411.png)
+
+如何写一个程序计算用户输入的数字的平均数，并输出所有大于平均数的数?
+
+
+
+
+
+![image-20260402133902802](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260402133902802.png)
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    int x;
+    double sum = 0;         // 累加器：依然用来存所有数字的总和
+    int cnt = 0;            // 计数器：记录你一共输入了几个数
+    
+    // 1. 开辟空间：这是“记忆”的关键
+    // 在内存里连续要了 100 个房间，贴上标签叫 number
+    // 这样程序就不再是“转头就忘”，而是能把数据存起来
+    int number[100];		
+    
+    scanf("%d", &x);
+    
+    // 2. 第一阶段：数据采集与存入
+    while (x != -1) {
+        // 将当前输入的 x 存入数组的第 cnt 个位置
+        // 就像把书按顺序放进书架的第 0, 1, 2... 个格子里
+        number[cnt] = x;	
+            /*	调试代码，   eg：输入  1  2  3 4  5  6  7  8  9  10
+        				会输出结果 cnt等于0的时候  number上是几， cnt等于1 的时...
+        {
+        	int i;
+        	printf("%d\t",cnt);
+        	for (i=0; i<=cnt; i++){
+        		printf("%d\t",number[i]);
+        	}
+        	printf("\n");
+        }
+        */
+        
+        sum += x;           // 累加总和
+        cnt++;              // 房间索引往后移一位
+        scanf("%d", &x);    // 读取下一个
+    }
+    
+    // 3. 第二阶段：计算与“回头看”
+    if (cnt > 0) {
+        // 打印平均值
+        printf("%f\n", sum / cnt);
+        
+        int i;
+        // 核心逻辑：遍历数组
+        // 因为数字都存在 number 数组里，我们可以重新从 0 扫到 cnt-1
+        for ( i = 0; i < cnt; i++){
+            // 拿出第 i 个格子的数字，跟算好的平均值做比较
+            if( number[i] > sum / cnt){
+                printf("%d\n", number[i]); // 只打印出那些“优等生”
+            }
+        }
+    }
+    
+    return 0;
+}
+
+```
+
+![image-20260402142035655](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260402142035655.png)
+
+
+
+# 定义数组
+
+
+
+![image-20260402142528233](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260402142528233.png)
+
+![image-20260402142816291](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260402142816291.png)
+
+![image-20260402142941559](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260402142941559.png)
+
+
+
+## 数组的单元
+
+![image-20260402144359174](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260402144359174.png)
+
+
+
+### 有效的下标范围
+
+![image-20260402145037099](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260402145037099.png)
+
+## 问题
+
+10已经超过了数组int a[10]  ---> 0-9        
+
+![image-20260402145144839](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260402145144839.png)
+
+![image-20260402145628105](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260402145628105.png)
+
+![image-20260402145728275](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260402145728275.png)
+
+![image-20260402145808679](C:/Users/cici/AppData/Roaming/Typora/typora-user-images/image-20260402145808679.png)
+

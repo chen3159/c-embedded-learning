@@ -1,0 +1,100 @@
+# 本地变量
+
+![image-20260401230605958](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260401230605958.png)
+
+![image-20260401230659020](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260401230659020.png)
+
+​	
+
+```c
+#include <stdio.h>
+
+void swap(int a, int b);
+
+int main()
+{
+    int a = 5;
+    int b = 6;
+    swap(a, b);
+    printf("a=%d,b=%d\n", a, b);
+    return 0;
+}
+void swap(int x, int y){
+    int swap;
+    int t = x;
+    x = y;
+    y = t;
+}
+```
+
+
+
+![image-20260401231535393](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260401231535393.png)
+
+![image-20260401232035689](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260401232035689.png)
+
+## 一些有关函数的细节问题
+
+![image-20260402095548033](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260402095548033.png)
+
+ 不写参数的时候编译器会认为你不知道，而不是没有。
+
+```c
+#include <stdio.h>
+
+// void swap(int a, int b);
+void swap();		//没有参数则直接声明 void  
+
+int main()
+{
+    int a = 5;
+    int b = 6;
+    swap(a,b);	 //这里安排的是整数int	 传到下面
+
+    {
+        int a = 0;
+        // int a = 10;
+        // printf("a=%d\n",a);
+    }
+    printf("a=%d,b=%d\n", a, b);
+
+    return 0;
+}
+
+void swap(double a, double b)	//我们上面没有定义参数，这里编译器就会不确定，double也是不确定的一种所以不会报错；原型的作用不仅检查对函数的定义是否是对的，还检查对函数的调用。
+{
+    int t = a;
+    printf("in swap,a=%f,b=%f\n", a, b);
+    a = b;
+    b = t;
+}
+```
+
+
+
+## 逗号运算符
+
+套两个括号 就是逗号运算符了 表明先做括号里的运算。
+
+![](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260402100544111.png)
+
+![image-20260402100723837](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260402100723837.png)
+
+
+
+不要这样写！
+
+函数的原型声明  拿出来写在外面
+
+return(i);这个圆括号没有意义，但会误解为是一个函数。
+
+![image-20260402100808315](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260402100808315.png)
+
+
+
+## 关于main
+
+![image-20260402101032922](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260402101032922.png)
+
+
+

@@ -1,0 +1,309 @@
+# 字符串
+
+
+
+
+
+![image-20260404140349101](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260404140349101.png)
+
+
+
+最后一个单元存放的是0，它就成为c语言可以使用的字符串
+
+![image-20260404140355647](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260404140355647.png)
+
+
+
+![image-20260404140500065](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260404140500065.png)
+
+字符数组
+
+![image-20260406155023264](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260406155023264.png)
+
+![image-20260406184932354](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260406184932354.png)
+
+![image-20260406211508479](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260406211508479.png)
+
+## 字符串变量
+
+### 字符串常量
+
+​	
+
+![image-20260407125459610](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407125459610.png)
+
+
+
+![image-20260407130020995](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407130020995.png)
+
+
+
+## 字符串输入输出
+
+
+
+![image-20260407130204056](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407130204056.png)
+
+
+
+
+
+![image-20260407130602469](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407130602469.png)
+
+```c
+#include <stdio.h>  // 引入标准输入输出头文件，用于使用 scanf 和 
+
+int main(void)      // 主函数，程序的入口点
+{
+    // 定义两个字符数组（字符串），每个数组长度为 8
+    // 注意：这意味着每个字符串最多只能存储 7 个字符，因为需要留 1 个字节给字符串结束符 '\0'
+    char word[8];
+    char word2[8];
+
+    // 从键盘读取第一个字符串并存储到 word 数组中
+    // 注意：如果输入的字符串超过 7 个字符，会导致缓冲区溢出（Buffer Overflow），这是不安全的
+    scanf("%s", word);
+
+    // 从键盘读取第二个字符串并存储到 word2 数组中
+    scanf("%s", word2);
+
+    // 按照指定格式输出两个字符串
+    // 输出格式为：第一个字符串 + "###" + 第二个字符串 + "##" + 换行符
+    printf("%s###%s##\n", word, word2);
+
+    return 0;       // 程序正常结束，返回 0
+}
+```
+
+数组越界了 导致程序崩溃。
+
+![image-20260407130735250](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407130735250.png)
+
+
+
+加上%7s 只让读取七个
+
+![image-20260407130800125](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407130800125.png)
+
+![image-20260407130843257](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407130843257.png)
+
+***常见错误***
+
+![image-20260407130857470](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407130857470.png)
+
+
+
+
+
+![image-20260407131021354](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407131021354.png)
+
+## 字符串数组
+
+
+
+![image-20260407131357289](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407131357289.png)
+
+
+
+
+
+
+
+![image-20260407131256439](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407131256439.png)
+
+![image-20260407131436965](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407131436965.png)
+
+
+
+![image-20260407131442125](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407131442125.png)
+
+![image-20260407131706744](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407131706744.png)
+
+
+
+## 单字符输入输出
+
+![image-20260407175959763](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407175959763.png)
+
+![image-20260407180131123](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407180131123.png)
+
+
+
+![image-20260407181612998](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407181612998.png)
+
+Windows输入 `ctrl+z`
+
+[笔记回忆](https://www.bilibili.com/video/BV1dr4y1n7vA?spm_id_from=333.788.player.switch&vd_source=fff7ca39d03197ece6078412cb2de445&p=92)
+
+`7:25`
+
+![image-20260407193122676](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407193122676.png)
+
+## 字符串函数
+
+![image-20260407204440926](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407204440926.png)
+
+
+
+### Strlen
+
+![image-20260407204449161](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407204449161.png)
+
+```c
+#include <stdio.h>   
+#include <string.h>  
+
+// 自定义函数：模拟strlen，计算字符串有效长度（不含'\0'）
+// 参数：const char* s 表示传入的字符串只读，防止意外修改
+size_t mylen(const char* s)
+{
+    int cnt = 0;   // 计数器，用来记录字符个数
+    int idx = 0;   // 数组下标，用来遍历字符串
+
+    // 循环条件：当s[idx]不是字符串结束符'\0'时，继续循环
+    while (s[idx] != '\0') {
+        idx++;    // 下标往后移一位
+        cnt++;    // 有效字符计数+1
+    }
+
+    return cnt;    // 返回有效字符的个数
+}
+
+int main(int argc, char const *argv[])
+{
+    // 定义字符数组，用字符串常量初始化，末尾会自动加上'\0'
+    char line[] = "Hello";
+
+    // 调用自定义的mylen函数，打印字符串有效长度
+    // %lu 是无符号长整型的格式化输出符，因为size_t本质是unsigned long
+    printf("strlen=%lu\n", mylen(line));
+
+    // 打印数组的实际占用空间大小（包含'\0'）
+    printf("sizeof=%lu\n", sizeof(line));
+
+    return 0;   // 程序正常结束，返回0给操作系统
+}
+```
+
+![image-20260407205120780](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407205120780.png)
+
+### Strcmp
+
+![image-20260407205640015](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407205640015.png)
+
+
+
+```c
+#include <stdio.h>
+
+#include <string.h>
+
+int main(int argc, char const *argv[])
+{
+    // 定义字符数组s1，存储字符串"abc"，系统自动在末尾添加结束符'\0'
+    char s1[] = "abc";
+    // 定义字符数组s2，存储字符串"abc"
+    char s2[] = "abc";
+
+    // 调用strcmp函数比较两个字符串，结果用printf打印
+    // strcmp相等返回0，s1>s2返回正数，s1<s2返回负数
+    printf("%d\n", strcmp(s1,s2));
+
+    // 计算小写字母a和大写字母A的ASCII码差值并打印
+    // 小写字母的ASCII码比对应大写字母大32
+    printf("%d\n", 'a'-'A');
+
+    // 程序正常结束，返回0
+    return 0;
+}
+```
+
+![image-20260407212645057](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407212645057.png)
+
+![image-20260407212547031](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407212547031.png)
+
+
+
+```c
+#include <stdio.h>
+// 引入字符串处理头文件，用于字符串操作
+#include <string.h>
+
+/**
+ * @brief 自定义字符串比较函数（模拟strcmp逻辑）
+ * @param s1  待比较字符串1
+ * @param s2  待比较字符串2
+ * @return    差值：0表示相等，非0表示第一个不同字符的ASCII差值
+ */
+int mycmp(const char* s1, const char* s2)
+{
+    // 注释掉的下标遍历写法（等价于下面的指针写法）
+    // int idx = 0;
+    // while ( s1[idx] == s2[idx] && s1[idx] != '\0' ) { 
+    //     idx ++; 
+    // }
+
+    // 核心逻辑：指针遍历比较字符串
+    // 循环条件：两个指针指向的字符相等 && 未到达字符串末尾（\0是字符串结束符）
+    while (*s1 == *s2 && *s1 != '\0') {
+        s1++;  // 指针后移，比较下一个字符
+        s2++;  // 指针后移，比较下一个字符
+    }
+
+    // 返回第一个不同字符的ASCII差值
+    // 若字符串相等，此时*s1和*s2都是\0，差值为0
+    return *s1 - *s2;
+}
+
+int main(int argc, char const *argv[])
+{
+    // 定义并初始化两个字符数组（字符串）
+    char s1[] = "abc";
+    char s2[] = "abc";
+
+    // 调用自定义比较函数，打印两个字符串的比较结果
+    printf("%d\n", mycmp(s1,s2));
+    // 直接打印字符 'a' 与 'A' 的ASCII差值
+    // 'a' ASCII值：97；'A' ASCII值：65；差值为 32
+    printf("%d\n", 'a'-'A');
+
+    return 0;
+}
+```
+
+### Strcpy
+
+![image-20260407222336011](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407222336011.png)
+
+![image-20260407222543618](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407222543618.png)
+
+***可以用strln来得到那个字符串的长度，不包含\0， 指的是纯内容的长度。所以我们需要加1***
+
+![image-20260407222806572](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407222806572.png)
+
+数组版本
+
+![image-20260407223809070](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407223809070.png)
+
+指针版本
+
+![image-20260407224109415](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407224109415.png)
+
+
+
+## 字符串中找字符
+
+
+
+![image-20260407224151883](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407224151883.png)
+
+
+
+![image-20260407230552624](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407230552624.png)
+
+![image-20260407232615098](https://raw.githubusercontent.com/czh010/images/main/hardwa/image-20260407232615098.png)
+
+
+
+
+
